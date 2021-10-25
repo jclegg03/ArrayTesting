@@ -31,6 +31,13 @@ public class Controller
 		{
 			view.displayMessage("The index of " + index + " in the array contains the number: " + numbers[index]);
 		}
+		
+		for(int index = numbers.length - 1; index >= 0; index--)
+		{
+			view.displayMessage("The index of " + index + " in the array contains the number: " + numbers[index]);
+		}
+		
+//		view.displayMessage(numbers.toString());
 	}
 	
 	private void stuffWithStringArray()
