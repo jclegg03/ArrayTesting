@@ -13,7 +13,7 @@ public class Controller
 	
 	public void start()
 	{
-		stuffWithIntArray();
+//		stuffWithIntArray();
 		stuffWithStringArray();
 	}
 	
@@ -37,11 +37,20 @@ public class Controller
 			view.displayMessage("The index of " + index + " in the array contains the number: " + numbers[index]);
 		}
 		
+		for(int value : numbers)
+		{
+			view.displayMessage("The current value is: " + value);
+		}
+		
 //		view.displayMessage(numbers.toString());
 	}
 	
 	private void stuffWithStringArray()
 	{
-		
+		String[] inputs = new String[5];
+		for(int index = 0; index < inputs.length; index++)
+		{
+			inputs[index] = view.askQuestion("Give me a word.");
+		}
 	}
 }
