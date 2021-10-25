@@ -13,7 +13,7 @@ public class Controller
 	
 	public void start()
 	{
-//		stuffWithIntArray();
+		stuffWithIntArray();
 		stuffWithStringArray();
 	}
 	
