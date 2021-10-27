@@ -14,11 +14,34 @@ public class Controller
 		fillTheArray(sample);
 	}
 	
+	private void fillTheArray(int[] nums)
+	{
+		for(int index = 0; index < nums.length; index++)
+		{
+			try
+			{
+				nums[index] = Integer.parseInt(view.askQuestion("What number should go in the array?"));
+			}
+			catch(java.lang.NumberFormatException e)
+			{
+				nums[index] = 0;
+			}
+		}
+	}
+	
 	private void fillTheArray(String[] words)
 	{
 		for(int index = 0; index < words.length; index++)
 		{
 			words[index] = view.askQuestion("What should go in the array?");
+		}
+	}
+	
+	private void displayArrayContents(int[] nums)
+	{
+		for(int num : nums)
+		{
+			view.displayMessage("The current number is: " + num);
 		}
 	}
 	
@@ -33,7 +56,7 @@ public class Controller
 	public void start()
 	{
 		displayArrayContents(sample);
-//		stuffWithIntArray();
+		stuffWithIntArray();
 		stuffWithStringArray();
 	}
 	
@@ -41,26 +64,19 @@ public class Controller
 	{
 		int[] numbers = new int[5];
 		
-		numbers[4] = 12345;
-		numbers[0] = 99999;
-		numbers[2] = 1;
-		numbers[3] = -4321;
-		numbers[1] = 22;
+		fillTheArray(numbers);
 		
-		for(int index = 0; index < numbers.length; index++)
-		{
-			view.displayMessage("The index of " + index + " in the array contains the number: " + numbers[index]);
-		}
+		displayArrayContents(numbers);
 		
-		for(int index = numbers.length - 1; index >= 0; index--)
-		{
-			view.displayMessage("The index of " + index + " in the array contains the number: " + numbers[index]);
-		}
-		
-		for(int value : numbers)
-		{
-			view.displayMessage("The current value is: " + value);
-		}
+//		for(int index = numbers.length - 1; index >= 0; index--)
+//		{
+//			view.displayMessage("The index of " + index + " in the array contains the number: " + numbers[index]);
+//		}
+//		
+//		for(int value : numbers)
+//		{
+//			view.displayMessage("The current value is: " + value);
+//		}
 		
 //		view.displayMessage(numbers.toString());
 	}
