@@ -5,15 +5,35 @@ import array.view.Popup;
 public class Controller
 {
 	private Popup view;
+	private String[] sample;
 	
 	public Controller()
 	{
+		this.sample = new String[6];
 		this.view = new Popup();
+		fillTheArray(sample);
+	}
+	
+	private void fillTheArray(String[] words)
+	{
+		for(int index = 0; index < words.length; index++)
+		{
+			words[index] = view.askQuestion("What should go in the array?");
+		}
+	}
+	
+	private void displayArrayContents(String[] words)
+	{
+		for(String word : words)
+		{
+			view.displayMessage(word);
+		}
 	}
 	
 	public void start()
 	{
-		stuffWithIntArray();
+		displayArrayContents(sample);
+//		stuffWithIntArray();
 		stuffWithStringArray();
 	}
 	
@@ -48,9 +68,7 @@ public class Controller
 	private void stuffWithStringArray()
 	{
 		String[] inputs = new String[5];
-		for(int index = 0; index < inputs.length; index++)
-		{
-			inputs[index] = view.askQuestion("Give me a word.");
-		}
+		fillTheArray(inputs);
+		displayArrayContents(inputs);
 	}
 }
