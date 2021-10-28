@@ -53,6 +53,13 @@ public class Controller
 		}
 	}
 	
+	public void start(String[] contents)
+	{
+		displayArrayContents(contents);
+		contents[2] = view.askQuestion("What should we replace index 2 with?");
+		displayArrayContents(contents);
+	}
+	
 	public void start()
 	{
 		displayArrayContents(sample);
