@@ -63,8 +63,9 @@ public class Controller
 	public void start()
 	{
 //		displayArrayContents(sample);
-		stuffWithIntArray();
+//		stuffWithIntArray();
 //		stuffWithStringArray();
+		testMeans();
 	}
 	
 	private void stuffWithIntArray()
@@ -205,4 +206,51 @@ public class Controller
 		return sum;
 	}
 	
+	private int sigma(int[] nums)
+	{
+		int sum = 0;
+		for(int num : nums)
+		{
+			sum += num;
+		}
+		return sum;
+	}
+	
+	private double product(double[] nums)
+	{
+		double product = 1.0;
+		for(double num : nums)
+		{
+			product *= num;
+		}
+		return product;
+	}
+	
+	private int product(int[] nums)
+	{
+		int product = 1;
+		for(int num : nums)
+		{
+			product *= num;
+		}
+		return product;
+	}
+	
+	private double mean(double[] nums)
+	{
+		return sigma(nums)/(nums.length);
+	}
+	
+	private double mean(int[] nums)
+	{
+		return (double) (sigma(nums)/(nums.length));
+	}
+	
+	private void testMeans()
+	{
+		int[] counters = {1,2,3,4,5,6,7,8,9,10};
+		double[] reals = {3.0, 3.1, 3.14, 3.141, 3.1415, 3.14159, 3.141592, 3.1415926};
+		view.displayMessage("" + mean(reals));
+		view.displayMessage("" + mean(counters));
+	}
 }
