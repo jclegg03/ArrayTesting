@@ -63,8 +63,8 @@ public class Controller
 	public void start()
 	{
 //		displayArrayContents(sample);
-//		stuffWithIntArray();
-		stuffWithStringArray();
+		stuffWithIntArray();
+//		stuffWithStringArray();
 	}
 	
 	private void stuffWithIntArray()
@@ -74,6 +74,8 @@ public class Controller
 		fillTheArray(numbers);
 		
 		displayArrayContents(numbers);
+		
+		view.displayMessage("The value of 5 is at the index: " + indexOf(5, numbers) + ".");
 		
 //		for(int index = numbers.length - 1; index >= 0; index--)
 //		{
@@ -96,6 +98,11 @@ public class Controller
 		view.displayMessage("The biggest word in inputs is: " + findMax(inputs));
 	}
 	
+	/**
+	 * Returns the minimum value of a given int array.
+	 * @param nums The given int array.
+	 * @return The minimum value of that array.
+	 */
 	private int findMin(int[] nums)
 	{
 		int min = Integer.MAX_VALUE;
@@ -109,6 +116,11 @@ public class Controller
 		return min;
 	}
 	
+	/**
+	 * Returns the maximum value from a given int array.
+	 * @param nums The given int array.
+	 * @return The maximum value of that array.
+	 */
 	private int findMax(int[] nums)
 	{
 		int max;
@@ -130,6 +142,11 @@ public class Controller
 		return max;
 	}
 	
+	/**
+	 * Returns The first word alphabetically. Uses unicode values so lowercase comes before upper.
+	 * @param words The string array being seached.
+	 * @return The first word alphabetically.
+	 */
 	private String findMax(String[] words)
 	{
 		String max = words[0];
@@ -143,6 +160,11 @@ public class Controller
 		return max;
 	}
 	
+	/**
+	 * Returns the last word alphabetically. Uses unicode values so uppercase is below lower.
+	 * @param words The string array being searched.
+	 * @return The first word alphabetically.
+	 */
 	private String findMin(String[] words)
 	{
 		String min = words[0];
@@ -164,12 +186,12 @@ public class Controller
 	 */
 	private int indexOf(int num, int[] nums)
 	{
-		int index = -1;
+		int index = 0;
 		while(index < nums.length) 
 		{
+			if(nums[index] == num) return index+1;
 			index++;
-			if(nums[index] == num) return index;
 		}
-		return index;
+		return -1;
 	}
 }
