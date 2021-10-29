@@ -94,4 +94,38 @@ public class Controller
 		fillTheArray(inputs);
 		displayArrayContents(inputs);
 	}
+	
+	private int findMin(int[] nums)
+	{
+		int min = Integer.MAX_VALUE;
+		for(int num : nums)
+		{
+			if(num<min)
+			{
+				min = num;
+			}
+		}
+		return min;
+	}
+	
+	private int findMax(int[] nums)
+	{
+		int max;
+		if(nums.length > 0)
+		{
+			max = nums[0];
+			for(int i = 1; i < nums.length; i++)
+			{
+				if(nums[i] > max)
+				{
+					max = nums[i];
+				}
+			}
+		}
+		else
+		{
+			max = Integer.MIN_VALUE;
+		}
+		return max;
+	}
 }
