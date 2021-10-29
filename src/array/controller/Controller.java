@@ -11,7 +11,7 @@ public class Controller
 	{
 		this.sample = new String[6];
 		this.view = new Popup();
-		fillTheArray(sample);
+//		fillTheArray(sample);
 	}
 	
 	private void fillTheArray(int[] nums)
@@ -62,8 +62,8 @@ public class Controller
 	
 	public void start()
 	{
-		displayArrayContents(sample);
-		stuffWithIntArray();
+//		displayArrayContents(sample);
+//		stuffWithIntArray();
 		stuffWithStringArray();
 	}
 	
@@ -92,7 +92,8 @@ public class Controller
 	{
 		String[] inputs = new String[5];
 		fillTheArray(inputs);
-		displayArrayContents(inputs);
+//		displayArrayContents(inputs);
+		view.displayMessage("The biggest word in inputs is: " + findMax(inputs));
 	}
 	
 	private int findMin(int[] nums)
@@ -127,5 +128,48 @@ public class Controller
 			max = Integer.MIN_VALUE;
 		}
 		return max;
+	}
+	
+	private String findMax(String[] words)
+	{
+		String max = words[0];
+		for(String word : words)
+		{
+			if(word.compareTo(max) > 0)
+			{
+				max = word;
+			}
+		}
+		return max;
+	}
+	
+	private String findMin(String[] words)
+	{
+		String min = words[0];
+		for(String word : words)
+		{
+			if(word.compareTo(min) < 0)
+			{
+				min = word;
+			}
+		}
+		return min;
+	}
+	
+	/**
+	 * Finds the index of a given number in a given array of numbers.
+	 * @param num The number you're looking for.
+	 * @param nums They array being searched.
+	 * @return The index of the number or -1 if it isn't there.
+	 */
+	private int indexOf(int num, int[] nums)
+	{
+		int index = -1;
+		while(index < nums.length) 
+		{
+			index++;
+			if(nums[index] == num) return index;
+		}
+		return index;
 	}
 }
