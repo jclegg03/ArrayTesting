@@ -1,5 +1,6 @@
 package array.controller;
 
+import java.util.ArrayList;
 import array.view.Popup;
 
 public class Controller
@@ -55,9 +56,9 @@ public class Controller
 	
 	public void start(String[] contents)
 	{
-		displayArrayContents(contents);
-		contents[2] = view.askQuestion("What should we replace index 2 with?");
-		displayArrayContents(contents);
+//		displayArrayContents(contents);
+//		contents[2] = view.askQuestion("What should we replace index 2 with?");
+//		displayArrayContents(contents);
 	}
 	
 	public void start()
@@ -65,7 +66,8 @@ public class Controller
 //		displayArrayContents(sample);
 //		stuffWithIntArray();
 //		stuffWithStringArray();
-		testMeans();
+//		testMeans();
+		transfersDemo();
 	}
 	
 	private void stuffWithIntArray()
@@ -252,5 +254,39 @@ public class Controller
 		double[] reals = {3.0, 3.1, 3.14, 3.141, 3.1415, 3.14159, 3.141592, 3.1415926};
 		view.displayMessage("" + mean(reals));
 		view.displayMessage("" + mean(counters));
+	}
+	
+	private String[] toArray(ArrayList<String> list)
+	{
+		String[] text = new String[list.size()];
+		
+		for(int index = 0; index < text.length; index++)
+		{
+			text[index] = list.get(index);
+		}
+		
+		return text;
+	}
+	
+	private void transfersDemo()
+	{
+		String input = view.askQuestion("Type in a word, or quit to stop");
+		ArrayList<String> words = new ArrayList<String>();
+		
+		words.add(input);
+		
+		while(! input.toLowerCase().contentEquals("quit"))
+		{
+			input = view.askQuestion("Type in more words or quit");
+			words.add(input);
+		}
+		
+		String[] arrayVersion = toArray(words);
+		
+		for(int index = 0; index < arrayVersion.length; index++)
+		{
+			view.displayMessage("The array contains " + arrayVersion[index] + " at the index of " + index + ".\n" +
+					"The list has " + words.get(index) + " at the index of " + index + ".");
+		}
 	}
 }
