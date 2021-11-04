@@ -268,6 +268,18 @@ public class Controller
 		return text;
 	}
 	
+	private ArrayList<String> toList(String[] list)
+	{
+		ArrayList<String> words = new ArrayList<String>();
+		
+		for(String str : list)
+		{
+			words.add(str);
+		}
+		
+		return words;
+	}
+	
 	private void transfersDemo()
 	{
 		String input = view.askQuestion("Type in a word, or quit to stop");
