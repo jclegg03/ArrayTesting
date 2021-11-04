@@ -300,5 +300,20 @@ public class Controller
 			view.displayMessage("The array contains " + arrayVersion[index] + " at the index of " + index + ".\n" +
 					"The list has " + words.get(index) + " at the index of " + index + ".");
 		}
+		
+		arrayVersion[0] = "Deom of Objects";
+		
+		view.displayMessage("The array has " + arrayVersion[0] + " at index of 0.\n"
+				+ "The list has " + words.get(0) + " at the index of 0");
+		
+		String text = "Hello ";
+		words.add(text);
+		
+		arrayVersion = toArray(words);
+		
+		text += " there!";
+		
+		view.displayMessage("The final value in the array is " + arrayVersion[arrayVersion.length - 1] + ".\n"
+				+ "The final value in the list is " + words.get(words.size() - 1) + ".");
 	}
 }
