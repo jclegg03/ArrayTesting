@@ -67,7 +67,8 @@ public class Controller
 //		stuffWithIntArray();
 //		stuffWithStringArray();
 //		testMeans();
-		transfersDemo();
+//		transfersDemo();
+		reversingData();
 	}
 	
 	private void stuffWithIntArray()
@@ -315,5 +316,40 @@ public class Controller
 		
 		view.displayMessage("The final value in the array is " + arrayVersion[arrayVersion.length - 1] + ".\n"
 				+ "The final value in the list is " + words.get(words.size() - 1) + ".");
+	}
+	
+	private void reversingData()
+	{
+		String sentence = "\"Hello there.\" -General Kenobi";
+		String palindrome = "Able was I ere I saw Elba";
+		
+		String[] sentenceArray = sentence.split(" ");
+		String[] reversedSentence = reverseIt(sentenceArray);
+		
+		for(int i = 0; i < sentenceArray.length; i++)
+		{
+			view.displayMessage("Original: " + sentenceArray[i] +
+					"\nReversed: " + reversedSentence[i]);
+		}
+		
+		String[] reversedPalindrome = reverseIt(palindrome.split(""));
+		String reversed = "";
+		for(String letter : reversedPalindrome)
+		{
+			reversed += letter;
+		}
+		view.displayMessage(palindrome + "\n" + reversed);
+	}
+	
+	private String[] reverseIt(String[] source)
+	{
+		String[] reversed = new String[source.length];
+		
+		for(int i = source.length - 1; i >= 0; i--)
+		{
+			reversed[source.length - 1 - i] = source[i];
+		}
+		
+		return reversed;
 	}
 }
