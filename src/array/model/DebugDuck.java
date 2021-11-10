@@ -1,6 +1,6 @@
 package array.model;
 
-public class DebugDuck
+public class DebugDuck implements Comparable <DebugDuck>
 {
 	private String name;
 	private int questionCount;
@@ -40,5 +40,10 @@ public class DebugDuck
 		this.questionCount = questionCount;
 	}
 	
-	
+	public int compareTo(DebugDuck compared)
+	{
+		int result = 0;
+		
+		return result;
+	}
 }
