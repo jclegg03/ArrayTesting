@@ -44,6 +44,19 @@ public class DebugDuck implements Comparable <DebugDuck>
 	{
 		int result = 0;
 		
+		if(this.equals(compared) || this.getQuestionCount() == compared.getQuestionCount())
+		{
+			return result;
+		}
+		else if(this.getQuestionCount() < compared.getQuestionCount())
+		{
+			result = -1;
+		}
+		else
+		{
+			result = 1;
+		}
+		
 		return result;
 	}
 }
