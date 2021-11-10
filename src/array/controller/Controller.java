@@ -30,6 +30,73 @@ public class Controller
 		}
 	}
 	
+	private void insertionSort(String[] data)
+	{
+		for(int outer = 1; outer < data.length; outer++)
+		{
+			String testedString = data[outer];
+			int inner = outer - 1;
+			
+			while(inner >= 0 && testedString.compareTo(data[inner]) < 0)
+			{
+				data[inner + 1] = data[inner];
+				inner--;
+			}
+			data[inner + 1] = testedString;
+		}
+	}
+	
+	private void selectionSort(int[] data)
+	{
+		int length = data.length;
+		
+		for(int outer = 0; outer < length; outer++)
+		{
+			int minIndex = outer;
+			for(int inner = outer + 1; inner < length; inner++)
+			{
+				if(data[inner] < data[minIndex])
+				{
+					minIndex = inner;
+				}
+			}
+			if(minIndex != outer)
+			{
+				swapItems(minIndex, outer, data);
+			}
+		}
+	}
+	
+	private void sortingDemo()
+	{
+		int[] sample = new int[25];
+		for(int index = 0; index < sample.length; index++)
+		{
+			sample[index] = (int) (Math.random() * 2048);
+		}
+		String unsorted  =convertArrayToText(sample);
+		selectionSort(sample);
+		String sorted  =convertArrayToText(sample);
+		
+		view.displayMessage("Unsorted:\n" + unsorted + "\nSorted:\n" + sorted);
+		
+		String[] strings = new String[9];
+		String source = "defenstration";
+		for(int index = 0; index < strings.length; index++)
+		{
+			String data = "";
+			int number = (int) (Math.random() * 1234);
+			int randomIndex = (int) (Math.random() * source.length());
+			data += source.substring(randomIndex);
+			data += " " + number;
+			strings[index] = data;
+		}
+		unsorted = convertArrayToText(strings);
+		insertionSort(strings);
+		sorted = convertArrayToText(strings);
+		view.displayMessage(unsorted + "\n" + sorted);
+	}
+	
 	private void fillTheArray(String[] words)
 	{
 		for(int index = 0; index < words.length; index++)
@@ -68,7 +135,8 @@ public class Controller
 //		stuffWithStringArray();
 //		testMeans();
 //		transfersDemo();
-		reversingData();
+//		reversingData();
+		sortingDemo();
 	}
 	
 	private void stuffWithIntArray()
@@ -351,5 +419,38 @@ public class Controller
 		}
 		
 		return reversed;
+	}
+	
+	private void swapItems(int minIndex, int outerIndex, int[] source)
+	{
+		int tempSwap = source[minIndex];
+		source[minIndex] = source[outerIndex];
+		source[outerIndex] = tempSwap;
+	}
+	
+	private String convertArrayToText(int[] data)
+	{
+		String contents = "Array contents:\n";
+		if(data.length < 30)
+		{
+			for(int value : data)
+			{
+				contents += value + " ";
+			}
+		}
+		return contents;
+	}
+	
+	private String convertArrayToText(String[] data)
+	{
+		String contents = "ArrayContents:\n";
+		if(data.length < 10)
+		{
+			for(String value : data)
+			{
+				contents += value + " ";
+			}
+		}
+		return contents;
 	}
 }
