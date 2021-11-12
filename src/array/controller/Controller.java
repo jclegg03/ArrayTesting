@@ -3,6 +3,7 @@ package array.controller;
 import java.util.ArrayList;
 import array.view.Popup;
 import java.util.Arrays;
+import array.model.DebugDuck;
 
 public class Controller
 {
@@ -484,7 +485,7 @@ public class Controller
 		}
 		
 		String unsortedNums = "";
-		String srotedNums = "";
+		String sortedNums = "";
 		
 		for(int index = 0; index < 10; index++)
 		{
@@ -503,5 +504,40 @@ public class Controller
 		String parsedSlowTime = parseTime(slowSortTime);
 		
 		view.displayMessage("fast:\n" + parsedTime + "\nslow:\n" + parsedSlowTime);
+		
+		for(int index = 0; index < 10;index++)
+		{
+			sortedNums += data[index] + " ";
+		}
+		view.displayMessage("See, it is sorted!\n" +
+		"Unsorted:\n" + unsortedNums + "\nSorted:\n" + sortedNums);
+		
+		DebugDuck[] ducks = new DebugDuck[500_000];
+		for(int index = 0; index < ducks.length; index ++)
+		{
+			DebugDuck tempDuck = new DebugDuck("Duck #" + index);
+			tempDuck.setQuestionCount((int) (Math.random() * 1_000));
+			ducks[index] = tempDuck;
+		}
+		
+		String unsortedNames = "";
+		String sortedNames = "";
+		for(int index = 0; index < 20; index++)
+		{
+			unsortedNames += ducks[index].getName() + " ";
+		}
+		long duckSortingTime = System.nanoTime();
+		Arrays.sort(ducks);
+		duckSortingTime -= System.nanoTime();
+		
+		for(int index = 0; index < 20; index++)
+		{
+			sortedNames += ducks[index].getName() + " ";
+		}
+		
+		String duckTime = parseTime(duckSortingTime);
+		
+		view.displayMessage(duckTime);
+		view.displayMessage("Unsorted:\n" + unsortedNames + "\nSorted:\n" + sortedNames);
 	}
 }
