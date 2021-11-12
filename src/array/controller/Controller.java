@@ -2,6 +2,7 @@ package array.controller;
 
 import java.util.ArrayList;
 import array.view.Popup;
+import java.util.Arrays;
 
 public class Controller
 {
@@ -136,7 +137,8 @@ public class Controller
 //		testMeans();
 //		transfersDemo();
 //		reversingData();
-		sortingDemo();
+//		sortingDemo();
+		advancedSortingDemo();
 	}
 	
 	private void stuffWithIntArray()
@@ -452,5 +454,54 @@ public class Controller
 			}
 		}
 		return contents;
+	}
+	
+	private String parseTime(long time)
+	{
+		String parsed = time + " elapsed nanoseconds?\n";
+		parsed += time / 60_000_000_000l + " minutes\n";
+		time %= 60_000_000_000l;
+		parsed += time / 1_000_000_000l + " seconds\n";
+		time %= 1_000_000_000l;
+		parsed += time / 1_000_000l + " milliseconds\n";
+		time %= 1_000_000l;
+		parsed += time / 1_000l + " microseconds\n";
+		time %= 1_000l;
+		parsed += time + " nanoseconds.";
+		
+		return parsed;
+	}
+	
+	private void advancedSortingDemo()
+	{
+		int[] data = new int[500_000];
+		int[] slowSortData = new int [500_000];
+		for(int index = 0; index < data.length; index++)
+		{
+			int value = (int) (Math.random() * 100_000);
+			data[index] = value;
+			slowSortData[index] = value;
+		}
+		
+		String unsortedNums = "";
+		String srotedNums = "";
+		
+		for(int index = 0; index < 10; index++)
+		{
+			unsortedNums += data[index] + " ";
+		}
+		
+		long fastSortTime = System.nanoTime();
+		Arrays.sort(data);
+		fastSortTime -= System.nanoTime();
+		
+		long slowSortTime = System.nanoTime();
+		selectionSort(slowSortData);
+		slowSortTime -= System.nanoTime();
+		
+		String parsedTime = parseTime(fastSortTime);
+		String parsedSlowTime = parseTime(slowSortTime);
+		
+		view.displayMessage("fast:\n" + parsedTime + "\nslow:\n" + parsedSlowTime);
 	}
 }
