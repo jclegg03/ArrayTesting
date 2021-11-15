@@ -3,7 +3,7 @@ package array.controller;
 import java.util.ArrayList;
 import array.view.Popup;
 import java.util.Arrays;
-import array.model.DebugDuck;
+import array.model.*;
 
 public class Controller
 {
@@ -139,7 +139,8 @@ public class Controller
 //		transfersDemo();
 //		reversingData();
 //		sortingDemo();
-		advancedSortingDemo();
+//		advancedSortingDemo();
+		moreSorting();
 	}
 	
 	private void stuffWithIntArray()
@@ -539,5 +540,20 @@ public class Controller
 		
 		view.displayMessage(duckTime);
 		view.displayMessage("Unsorted:\n" + unsortedNames + "\nSorted:\n" + sortedNames);
+	}
+	
+	private void moreSorting()
+	{
+		DebugDuck[] demo = new DebugDuck[10];
+		for(int index = 0; index < demo.length; index++)
+		{
+			DebugDuck temp = new DebugDuck("Number: " + index);
+			demo[index] = temp;
+		}
+		Arrays.sort(demo, new SortDucksByNameBackward());
+		for(DebugDuck current : demo)
+		{
+			view.displayMessage(current.getName());
+		}
 	}
 }
